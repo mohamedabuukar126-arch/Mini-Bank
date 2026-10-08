@@ -1,0 +1,53 @@
+import time
+# variables
+balance = 100
+
+while True:
+    print("\nWelcome to Abuukar's bank")
+    print("1. Check balance ")
+    print("2. Deposit money ")
+    print("3. Withdraw money ")
+    print("4. Exit")
+
+    try:
+        choice = int(input("\nSelect an option from the list: "))
+        if choice == 4:
+            print("Exiting...")
+            time.sleep(2)
+            break
+        elif choice > 4 or choice < 1:
+            print("Incorrect choice. Please try again")
+    except:
+        print("An error occured, please try again ")
+
+    # options
+    if choice == 1:
+        print("Checking balance.... ")
+        time.sleep(2)
+        print(f"Your balance is £{balance:.2f} ")
+    elif choice == 2:
+        while True:
+            deposit_amount = float(input("Enter the amount you would like to deposit: "))
+            if deposit_amount <= 0 or deposit_amount > 10000:
+                print("Sorry, but the value you entered is either below 0 or above 10000 ")
+                continue
+            break
+        balance += deposit_amount
+        print(f"Your new bank balance is: £{balance:.2f}")
+
+    elif choice == 3:
+        while True:
+            withdraw_amount = float(input("Please enter the withdraw amount: "))
+            if withdraw_amount > balance:
+                print("Insufficent Funds. Please try again ")
+                continue
+            break
+        if balance >= withdraw_amount:
+            balance -= withdraw_amount
+            print(f"Your new bank balance is: £{balance:.2f}")
+
+    
+
+
+
+
